@@ -1,4 +1,5 @@
-import MainImage from '../img/main_image1.png'; 
+import MainImage from "../img/main_image1.png";
+import { Link } from "react-router-dom";
 
 export default function Main() {
   return (
@@ -13,12 +14,12 @@ export default function Main() {
           <a href="/index" className="index_button">
             View your list
           </a>
-          <a href="/about" className="index_button">
+          <Link to="/about" className="index_button">
             About
-          </a>
+          </Link>
         </div>
         <div className="main_image">
-            <img src={MainImage} alt="Main"/>
+          <img src={MainImage} alt="Main" />
         </div>
       </section>
     </div>

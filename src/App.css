@@ -9,7 +9,7 @@ html {
   font-family: 'Hiragino Sans', sans-serif;
   line-height: 1.7;
   letter-spacing: 1px;
-  /* cursor: url(/img/cursor.png), auto; */
+  cursor: url(./img/cursor.png), auto;
 }
 
 body {
@@ -29,7 +29,7 @@ a {
   text-decoration: none;
   color: #2d3133;
   font-size: 14px;
-  /* cursor: url(/img/pointer_nyamka.png), auto; */
+  cursor: url(./img/pointer_nyamka.png), auto;
   /* custom pointer */
 }
 
@@ -38,7 +38,7 @@ a:hover {
 }
 
 input {
-  /* cursor: url(/img/pointer_nyamka.png), auto; */
+  cursor: url(./img/pointer_nyamka.png), auto;
   /* custom pointer */
 }
 
