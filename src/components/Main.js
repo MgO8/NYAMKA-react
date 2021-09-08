@@ -11,9 +11,9 @@ export default function Main() {
           <p className="description">
             NYAMKA lets you create and manage your daily food list easily.
           </p>
-          <a href="/index" className="index_button">
-            View your list
-          </a>
+          <Link to="/list" className="index_button">
+              View your list
+          </Link>
           <Link to="/about" className="index_button">
             About
           </Link>

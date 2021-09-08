@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 export default function Header() {
   return (
     <header className="header">
@@ -17,9 +19,9 @@ export default function Header() {
           <a href="/signup" className="signup login_logout">
             Sign up
           </a>
-          <a className="login_logout" href="/login">
-            Log in
-          </a>
+            <Link to="/login" className="login_logout">
+              Log in
+            </Link>
         </div>
       </div>
     </header>

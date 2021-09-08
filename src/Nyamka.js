@@ -3,12 +3,10 @@ import "./App.css";
 
 import Main from "./components/Main";
 
-function Nyamka() {
+export default function Nyamka() {
   return (
     <div className="Nyamka">
       <Main />
     </div>
   );
 }
-
-export default Nyamka;
