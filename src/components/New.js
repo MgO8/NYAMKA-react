@@ -1,33 +1,15 @@
 import { Link } from "react-router-dom";
 import { useState } from 'react';
-import Axios from 'axios';
 
-export default function New() {
+
+export default function New({ onItemCreate }) {
   const [name, setName] = useState('');
   const [price, setPrice] = useState('');
   const [date, setDate] = useState('');
-  // const [items, setItems] = useState([]);
-
-  const addItem = () => {
-    Axios.post("http://localhost:3001/create", {
-      name: name, 
-      price: price, 
-      date: date
-    }).then(() => {
-      console.log('success');
-    }).catch((e) => {
-      console.log(e)
-    })
-  };
-
-  // const addItem = () => {
-  //   const newItem = { name, price, date };
-  //   setItems([newItem, ...items]);
-  // };
 
   function handleSubmit(e) {
     e.preventDefault();
-    addItem();
+    onItemCreate({ name, price, date });
   }
 
   return (
@@ -37,7 +19,6 @@ export default function New() {
           <h1>Add Item</h1>
         </div>
         <div className="item-form-wrapper">
-          {/* <form action="/create" method="post">    */}
           <form onSubmit={handleSubmit}>
             <p className="form-label">Food name</p>
             <input value={name} onChange={(e) => setName(e.currentTarget.value)} type="text" required />
@@ -51,7 +32,7 @@ export default function New() {
           </form>
         </div>
         <Link to="/list" className="cancel-button">
-          Go back 
+          Go back
         </Link>
       </div>
     </div>
