@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import Axios from 'axios';
-import { v4 as uuidv4 } from "uuid";
+// import { v4 as uuidv4 } from "uuid";
 
 import New from './New.js';
 
@@ -20,7 +20,7 @@ export default function List() {
                 name: name,
                 price: price,
                 date: date,
-                id: Math.random()*1000000
+                id: Math.random() * 1000000
             }])
             console.log('success');
         }).catch((e) => {
@@ -38,13 +38,13 @@ export default function List() {
         const itemId = e.currentTarget.getAttribute("meow-id")
         e.preventDefault();
         Axios.delete(`http://localhost:3001/delete/${itemId}`)
-        .then(res => {
-          console.log(res.data);
-        //   здесь заместо консол лога нужно сделать так, чтобы страница после удаления перерендерилась
-        }).catch(err => {
-          console.warn(err.warn);
-        });
-      };
+            .then(res => {
+                console.log(res.data);
+                //   здесь заместо консол лога нужно сделать так, чтобы страница после удаления перерендерилась
+            }).catch(err => {
+                console.warn(err.warn);
+            });
+    };
 
     useEffect(() => {
         getFoodList(foodList);
@@ -65,7 +65,7 @@ export default function List() {
                 {foodItem.date}
             </span>
             <div class="item-menu">
-            <button onClick={deleteItem} meow-id={foodItem.id}>Delete</button>
+                <button onClick={deleteItem} meow-id={foodItem.id}>Delete</button>
             </div>
         </div>)
     })
@@ -90,12 +90,6 @@ export default function List() {
                     <ul className="table-body">
                         {itemList}
                         <li>
-                            <div class="item-menu">
-                                {/* <form action="/delete/<%= item.id %>" method="post">
-                                <input type="submit" value="Delete">
-                            </form>
-                            <a href="/edit/<%= item.id %>">Edit</a> */}
-                            </div>
                         </li>
                     </ul>
                 </div>

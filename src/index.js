@@ -5,6 +5,8 @@ import "./App.css";
 
 import reportWebVitals from "./reportWebVitals";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import { store } from './store/store';
+import { Provider } from 'react-redux';
 
 import Nyamka from "./Nyamka";
 
@@ -16,19 +18,21 @@ import Login from "./components/Login";
 import Signup from "./components/Signup";
 
 ReactDOM.render(
-  <React.StrictMode>
-    <Router>
-      <Header />
-      <Switch>
-        <Route exact path="/" component={Nyamka} />
-        <Route exact path="/list" component={List} />
-        <Route exact path="/new" component={New} />
-        <Route exact path="/about" component={About} />
-        <Route exact path="/login" component={Login} />
-        <Route exact path="/signup" component={Signup} />
-      </Switch>
-    </Router>
-  </React.StrictMode>,
+  <Provider store={store}>
+    <React.StrictMode>
+      <Router>
+        <Header />
+        <Switch>
+          <Route exact path="/" component={Nyamka} />
+          <Route exact path="/list" component={List} />
+          <Route exact path="/new" component={New} />
+          <Route exact path="/about" component={About} />
+          <Route exact path="/login" component={Login} />
+          <Route exact path="/signup" component={Signup} />
+        </Switch>
+      </Router>
+    </React.StrictMode>
+  </Provider>,
 
   document.getElementById("root")
 );

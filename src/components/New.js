@@ -27,7 +27,6 @@ export default function New({ onItemCreate }) {
               max="1000000" required />
             <p className="form-label" type="text">Date</p>
             <input value={date} onChange={(e) => setDate(e.currentTarget.value)} type="date" required />
-            Date
             <button type="submit">Add</button>
           </form>
         </div>
