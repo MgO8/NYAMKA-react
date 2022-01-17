@@ -1,53 +1,17 @@
+
+import { useDispatch, useSelector } from 'react-redux';
+import { useEffect } from 'react';
 import { Link } from "react-router-dom";
-import Axios from 'axios';
-// import { v4 as uuidv4 } from "uuid";
 
-import New from './New.js';
+import { deleteItem, fetchFoodList } from '../store/listSlice.middlewares'
 
-import { useState, useEffect } from 'react';
 
 export default function List() {
-    const [foodList, setFoodList] = useState([]);
-
-    // в редакс запихнуть потом 
-    const addItem = ({ name, price, date }) => {
-        Axios.post("http://localhost:3001/create", {
-            name: name,
-            price: price,
-            date: date
-        }).then(() => {
-            setFoodList((list) => [...list, {
-                name: name,
-                price: price,
-                date: date,
-                id: Math.random() * 1000000
-            }])
-            console.log('success');
-        }).catch((e) => {
-            console.log(e)
-        })
-    };
-
-    const getFoodList = () => {
-        Axios.get("http://localhost:3001/list").then((response) => {
-            setFoodList(response.data.items)
-        })
-    };
-
-    const deleteItem = (e, id) => {
-        const itemId = e.currentTarget.getAttribute("meow-id")
-        e.preventDefault();
-        Axios.delete(`http://localhost:3001/delete/${itemId}`)
-            .then(res => {
-                console.log(res.data);
-                //   здесь заместо консол лога нужно сделать так, чтобы страница после удаления перерендерилась
-            }).catch(err => {
-                console.warn(err.warn);
-            });
-    };
+    const dispatch = useDispatch();
+    const foodList = useSelector((state) => state.list.items);
 
     useEffect(() => {
-        getFoodList(foodList);
+        dispatch(fetchFoodList());
     }, []);
 
     const itemList = foodList.map(foodItem => {
@@ -64,15 +28,14 @@ export default function List() {
             <span className="date-column">
                 {foodItem.date}
             </span>
-            <div class="item-menu">
-                <button onClick={deleteItem} meow-id={foodItem.id}>Delete</button>
+            <div className="item-menu">
+                <button onClick={() => dispatch(deleteItem(foodItem.id))}>Delete</button>
             </div>
         </div>)
     })
 
     return (
         <div className="List">
-            <New onItemCreate={addItem}></New>
             <div className="container">
                 <div className="container-header">
                     <h1>Daily Food List</h1>

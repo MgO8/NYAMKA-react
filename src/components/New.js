@@ -1,15 +1,19 @@
+import { useDispatch } from 'react-redux';
 import { Link } from "react-router-dom";
 import { useState } from 'react';
 
+import { addItem } from '../store/listSlice.middlewares'
 
-export default function New({ onItemCreate }) {
+
+export default function New() {
+  const dispatch = useDispatch();
   const [name, setName] = useState('');
   const [price, setPrice] = useState('');
   const [date, setDate] = useState('');
 
   function handleSubmit(e) {
     e.preventDefault();
-    onItemCreate({ name, price, date });
+    dispatch(addItem({ name, price, date }))
   }
 
   return (
