@@ -16,6 +16,7 @@ import List from "./components/List";
 import New from "./components/New";
 import Login from "./components/Login";
 import Signup from "./components/Signup";
+import Edit from "./components/Edit";
 
 ReactDOM.render(
   <Provider store={store}>
@@ -29,6 +30,7 @@ ReactDOM.render(
           <Route exact path="/about" component={About} />
           <Route exact path="/login" component={Login} />
           <Route exact path="/signup" component={Signup} />
+          <Route exact path="/edit/:id" component={Edit} />
         </Switch>
       </Router>
     </React.StrictMode>

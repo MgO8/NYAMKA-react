@@ -25,3 +25,11 @@ export const deleteItem = createAsyncThunk(
         return response.data
     }
 )
+
+export const editFoodItem = createAsyncThunk(
+    'editFoodItem',
+    async (payload) => {
+        const response = await Axios.post(`http://localhost:3001/update/${payload.id}`, payload)
+        return response.data
+    }
+)

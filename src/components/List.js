@@ -5,7 +5,6 @@ import { Link } from "react-router-dom";
 
 import { deleteItem, fetchFoodList } from '../store/listSlice.middlewares'
 
-
 export default function List() {
     const dispatch = useDispatch();
     const foodList = useSelector((state) => state.list.items);
@@ -30,6 +29,9 @@ export default function List() {
             </span>
             <div className="item-menu">
                 <button onClick={() => dispatch(deleteItem(foodItem.id))}>Delete</button>
+                <Link to={`/edit/${foodItem.id}`} >
+                    Edit
+                </Link>
             </div>
         </div>)
     })

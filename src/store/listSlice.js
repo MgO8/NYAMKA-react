@@ -1,6 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit';
 
-import { fetchFoodList, addItem, deleteItem } from './listSlice.middlewares'
+import { fetchFoodList, addItem, deleteItem, editFoodItem } from './listSlice.middlewares'
 
 const listSlice = createSlice({
     name: 'items',
@@ -16,6 +16,14 @@ const listSlice = createSlice({
         })
         builder.addCase(deleteItem.fulfilled, (state, action) => {
             state.items = state.items.filter((item) => item.id !== Number(action.payload))
+        })
+        builder.addCase(editFoodItem.fulfilled, (state, action) => {
+            const payloadItem = action.payload[0]
+            const index = state.items.findIndex((item) => item.id === Number(payloadItem.id))
+            console.log(index, payloadItem.id)
+            if (index > -1) {
+                state.items.splice(index, 1, payloadItem)
+            }
         })
     }
 });
